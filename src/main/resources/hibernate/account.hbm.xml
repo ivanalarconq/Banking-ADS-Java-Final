@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<hibernate-mapping
+	package="banking.accounts.domain.entity">
+	<class name="Account" table="account" >
+		<id name="id" type="java.lang.Long">
+			<column name="account_id" />
+			<generator class="native" />
+		</id>
+		<property name="number" column="number" />
+		<property name="balance" column="balance" />
+		<property name="isLocked" column="locked" />
+		<property name="createdAt" column="created_at_utc" />
+		<property name="updatedAt" column="updated_at_utc" />
+		<many-to-one name="customer"
+			class="banking.customers.domain.entity.Customer" column="customer_id"
+			not-null="true" />
+	</class>
+</hibernate-mapping>
